@@ -1,0 +1,21 @@
+Struktury danych:
+    Lista - done
+        ArrayList - done
+        LinkedList (jednokierunkowa i dwukierunkowa) - done
+    Stos
+    Kolejka
+    Drzewo
+        Binary Search Tree
+        Red-Black
+    Mapy
+
+Złożoność obliczeniowa
+
+Sortowanie:
+    bubblesort
+    insertionsort
+    selectionsort
+    quicksort
+    heapsort
+    countingsort
+    mergesort
