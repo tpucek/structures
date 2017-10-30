@@ -4,9 +4,12 @@ public class Main {
     public static void main(String[] args) {
         Random random = new Random();
 
-        List test = new LinkedList();
+        Stack test = new LinkedStack();
+        test.push(1);
+        test.push(2);
+        System.out.println(test);
 
-        for(int i = 0;i < 10;++i) {
+      /*  for(int i = 0;i < 10;++i) {
             test.add(random.nextInt(1000) / 10.0);
         }
 
@@ -23,5 +26,6 @@ public class Main {
         System.out.println(test2);
         test2.remove(0);
         System.out.println(test2);
+        */
     }
 }
