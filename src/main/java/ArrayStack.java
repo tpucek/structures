@@ -42,6 +42,11 @@ public class ArrayStack<Type> implements Stack<Type> {
     }
 
     @Override
+    public boolean isEmpty() {
+        return length <= 0;
+    }
+
+    @Override
     public String toString() {
         if(length == 0) {
             return "[]";

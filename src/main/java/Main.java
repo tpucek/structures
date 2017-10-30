@@ -1,20 +1,22 @@
+import java.util.PriorityQueue;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Random random = new Random();
+        //Random random = new Random();
 
         /*List<Integer> arrayList = new ArrayList<Integer>(10, 5, (Integer size) -> {
             return new Integer[size];
         });*/
 
-        System.out.println("ArrayList:");
+        /*System.out.println("ArrayList:");
 
         List<Integer> arrayList = new ArrayList<Integer>(10, 5, size -> new Integer[size]);
 
         for(int i = 0;i < 10;++i) {
             arrayList.add(random.nextInt(100));
-        }
+        }*/
 
         /*System.out.println(arrayList);
         arrayList.remove(9);
@@ -27,7 +29,7 @@ public class Main {
         System.out.println("");
         System.out.println("LinkedList:");*/
 
-        List<Double> linkedList = new LinkedList<>();
+        /*List<Double> linkedList = new LinkedList<>();
         linkedList.add(random.nextInt(1000) / 10.0);
         System.out.println(linkedList);
         linkedList.remove(0);
@@ -64,5 +66,35 @@ public class Main {
         arrayStack.pop();
         //arrayStack.pop();
         System.out.println(arrayStack);*/
+
+        /*Scanner scanner = new Scanner(System.in);
+
+        Stack<Integer> linkedStack = new LinkedStack<>();
+
+        int a;
+        do {
+            a = scanner.nextInt();
+            linkedStack.push(a);
+        } while(a != 0);
+
+        while(!linkedStack.isEmpty()) {
+            System.out.println(linkedStack.pop());
+        }*/
+
+        Scanner scanner = new Scanner(System.in);
+
+        Queue<Integer> linkedStack = new LinkedQueue<>();
+
+        int a;
+        do {
+            a = scanner.nextInt();
+            linkedStack.add(a);
+            System.out.println(linkedStack);
+        } while(a != 0);
+
+        while(!linkedStack.isEmpty()) {
+            System.out.println(linkedStack.poll());
+            System.out.println(linkedStack);
+        }
     }
 }
