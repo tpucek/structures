@@ -1,34 +1,29 @@
-public class LinkedStack implements Stack {
-    private Node top = null;
-    private int length = 0;
+import java.util.EmptyStackException;
+
+public class LinkedStack<Type> implements Stack<Type> {
+    private Node<Type> top = null;
 
     @Override
-    public void push(double a) {
-        Node next = new Node(a);
-
-        if(top == null) {
-            top = next;
-        } else {
-            Node actual = top;
-
-            while (actual.next != null) {
-                actual = actual.next;
-            }
-
-            actual.next = next;
-        }
-
-        ++length;
+    public void push(Type a) {
+        Node<Type> newTop = new Node<>(a);
+        newTop.previous = top;
+        top = newTop;
     }
 
     @Override
-    public double pop() {
-        return 0;
+    public Type pop() {
+        if(top == null) {
+            throw new EmptyStackException();
+        }
+
+        Node<Type> previousTop = top;
+        top = top.previous;
+        return previousTop.value;
     }
 
     @Override
     public String toString() {
-        if(length == 0) {
+        if(top == null) {
             return "[]";
         }
 
@@ -36,14 +31,13 @@ public class LinkedStack implements Stack {
 
         Node actual = top;
 
-        for(int i = 0; i < length - 1; ++i) {
+        while(actual.previous != null) {
             textBuilder.append(actual.value).append(", ");
-            actual = actual.next;
+            actual = actual.previous;
         }
 
         textBuilder.append(actual.value).append("]");
 
         return textBuilder.toString();
     }
-
 }

@@ -1,16 +1,20 @@
-public class ArrayList implements List {
-    private double[] array;
+import java.util.function.Function;
+
+public class ArrayList<Type> implements List<Type> {
+    private Function<Integer, Type[]> supplier;
+    private Type[] array;
     private int length;
     private int sizeToAdd;
 
-    public ArrayList(int size, int sizeToAdd) {
-        array = new double[size];
+    public ArrayList(int size, int sizeToAdd, Function<Integer, Type[]> supplier) {
+        this.supplier = supplier;
+        array = supplier.apply(size);
         length = 0;
         this.sizeToAdd = sizeToAdd;
     }
 
     @Override
-    public void add(double a) {
+    public void add(Type a) {
         if(length == array.length) {
             addSize(sizeToAdd);
         }
@@ -19,7 +23,7 @@ public class ArrayList implements List {
     }
 
     public void addSize(int add) {
-        double[] temp = new double[length + add];
+        Type[] temp = supplier.apply(length + add);
 
         System.arraycopy(array, 0, temp, 0, array.length);
 
@@ -39,7 +43,7 @@ public class ArrayList implements List {
     }
 
     @Override
-    public double get(int i) {
+    public Type get(int i) {
         if(i >= length) {
             throw new IndexOutOfBoundsException(i + " >= " + length);
         }

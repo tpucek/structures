@@ -1,46 +1,44 @@
-import java.util.Arrays;
+import java.util.EmptyStackException;
 import java.util.function.Function;
 
-public class ArrayMaxSizeList<Type> implements List<Type> {
+public class ArrayStack<Type> implements Stack<Type> {
     private Function<Integer, Type[]> supplier;
     private Type[] array;
     private int length;
+    private int sizeToAdd;
 
-    public ArrayMaxSizeList(int size, Function<Integer, Type[]> supplier) {
+    public ArrayStack(int size, int sizeToAdd, Function<Integer, Type[]> supplier) {
         this.supplier = supplier;
         array = supplier.apply(size);
         length = 0;
+        this.sizeToAdd = sizeToAdd;
     }
 
     @Override
-    public void add(Type a) {
+    public void push(Type a) {
+        if(length == array.length) {
+            addSize(sizeToAdd);
+        }
         array[length] = a;
         ++length;
     }
 
-    @Override
-    public void remove(int index) {
-        if(index >= length) {
-            throw new IndexOutOfBoundsException(index + " >= " + length);
-        }
+    public void addSize(int add) {
+        Type[] temp = supplier.apply(length + add);
 
-        for(int i = index; i < length - 1; ++i) {
-            array[i] = array[i + 1];
+        System.arraycopy(array, 0, temp, 0, array.length);
+
+        array = temp;
+    }
+
+    @Override
+    public Type pop() {
+        if(length <= 0) {
+            throw new EmptyStackException();
         }
+        Type temp = array[length - 1];
         --length;
-    }
-
-    @Override
-    public Type get(int i) {
-        if(i >= length) {
-            throw new IndexOutOfBoundsException(i + " >= " + length);
-        }
-        return array[i];
-    }
-
-    @Override
-    public int size() {
-        return length;
+        return temp;
     }
 
     @Override
@@ -59,3 +57,4 @@ public class ArrayMaxSizeList<Type> implements List<Type> {
         return textBuilder.toString();
     }
 }
+
