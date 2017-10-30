@@ -16,7 +16,7 @@ public class Main {
             arrayList.add(random.nextInt(100));
         }
 
-        System.out.println(arrayList);
+        /*System.out.println(arrayList);
         arrayList.remove(9);
         System.out.println(arrayList);
         arrayList.remove(1);
@@ -25,7 +25,7 @@ public class Main {
         System.out.println(arrayList);
 
         System.out.println("");
-        System.out.println("LinkedList:");
+        System.out.println("LinkedList:");*/
 
         List<Double> linkedList = new LinkedList<>();
         linkedList.add(random.nextInt(1000) / 10.0);
