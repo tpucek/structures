@@ -52,7 +52,7 @@ public class Main {
         System.out.println("");
         System.out.println("LinkedStack:");
 
-        Stack<Integer> arrayStack = new ArrayStack<>(10, 5, size -> new Integer[size]);
+        /*Stack<Integer> arrayStack = new ArrayStack<>(10, 5, size -> new Integer[size]);
         arrayStack.push(random.nextInt(100));
         System.out.println(arrayStack);
         arrayStack.push(random.nextInt(100));
@@ -63,6 +63,6 @@ public class Main {
         arrayStack.pop();
         arrayStack.pop();
         //arrayStack.pop();
-        System.out.println(arrayStack);
+        System.out.println(arrayStack);*/
     }
 }
