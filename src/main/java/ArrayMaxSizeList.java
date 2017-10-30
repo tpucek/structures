@@ -1,16 +1,19 @@
 import java.util.Arrays;
+import java.util.function.Function;
 
-public class ArrayMaxSizeList implements List {
-    private double[] array;
+public class ArrayMaxSizeList<Type> implements List<Type> {
+    private Function<Integer, Type[]> supplier;
+    private Type[] array;
     private int length;
 
-    public ArrayMaxSizeList(int size) {
-        array = new double[size];
+    public ArrayMaxSizeList(int size, Function<Integer, Type[]> supplier) {
+        this.supplier = supplier;
+        array = supplier.apply(size);
         length = 0;
     }
 
     @Override
-    public void add(double a) {
+    public void add(Type a) {
         array[length] = a;
         ++length;
     }
@@ -28,7 +31,7 @@ public class ArrayMaxSizeList implements List {
     }
 
     @Override
-    public double get(int i) {
+    public Type get(int i) {
         if(i >= length) {
             throw new IndexOutOfBoundsException(i + " >= " + length);
         }

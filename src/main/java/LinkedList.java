@@ -1,15 +1,15 @@
-public class LinkedList implements List {
-    private Node first = null;
+public class LinkedList<Type> implements List<Type> {
+    private Node<Type> first = null;
     private int length = 0;
 
     @Override
-    public void add(double a) {
-        Node next = new Node(a);
+    public void add(Type a) {
+        Node<Type> next = new Node<>(a);
 
         if(first == null) {
             first = next;
         } else {
-            Node actual = first;
+            Node<Type> actual = first;
 
             while (actual.next != null) {
                 actual = actual.next;
@@ -33,7 +33,7 @@ public class LinkedList implements List {
             return;
         }
 
-        Node actual = first;
+        Node<Type> actual = first;
 
         for(int i = 0;i < index - 1;++i) {
             actual = actual.next;
@@ -44,12 +44,12 @@ public class LinkedList implements List {
     }
 
     @Override
-    public double get(int index) {
+    public Type get(int index) {
         if(index >= length) {
             throw new IndexOutOfBoundsException(index + " >= " + length);
         }
 
-        Node actual = first;
+        Node<Type> actual = first;
 
         for(int i = 0;i < index;++i) {
             actual = actual.next;
@@ -71,7 +71,7 @@ public class LinkedList implements List {
 
         StringBuilder textBuilder = new StringBuilder("[");
 
-        Node actual = first;
+        Node<Type> actual = first;
 
         for(int i = 0; i < length - 1; ++i) {
             textBuilder.append(actual.value).append(", ");

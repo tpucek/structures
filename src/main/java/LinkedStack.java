@@ -1,22 +1,22 @@
 import java.util.EmptyStackException;
 
-public class LinkedStack implements Stack {
-    private Node top = null;
+public class LinkedStack<Type> implements Stack<Type> {
+    private Node<Type> top = null;
 
     @Override
-    public void push(double a) {
-        Node newTop = new Node(a);
+    public void push(Type a) {
+        Node<Type> newTop = new Node<>(a);
         newTop.previous = top;
         top = newTop;
     }
 
     @Override
-    public double pop() {
+    public Type pop() {
         if(top == null) {
             throw new EmptyStackException();
         }
 
-        Node previousTop = top;
+        Node<Type> previousTop = top;
         top = top.previous;
         return previousTop.value;
     }
