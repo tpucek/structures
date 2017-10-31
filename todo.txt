@@ -3,10 +3,10 @@ Struktury danych:
         ArrayList - done
         LinkedList (jednokierunkowa i dwukierunkowa) - done
     Stos - done
-    Kolejka
+    Kolejka - done
+    Set
     Drzewo
         Binary Search Tree
-        Red-Black
     Mapy
 
 Złożoność obliczeniowa
