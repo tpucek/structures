@@ -1,79 +1,45 @@
-public class LinkedList<Type> implements List<Type> {
-    private Node<Type> first = null;
-    private int length = 0;
+public class LinkedQueue<Type> implements Queue<Type> {
+    private Node<Type> head = null;
+    private Node<Type> tail = null;
 
     @Override
     public void add(Type a) {
-        Node<Type> next = new Node<>(a);
-
-        if(first == null) {
-            first = next;
+        Node<Type> node = new Node<>(a);
+        if(isEmpty()) {
+            head = node;
+            tail = node;
         } else {
-            Node<Type> actual = first;
-
-            while (actual.next != null) {
-                actual = actual.next;
-            }
-
-            actual.next = next;
+            tail.next = node;
+            node.previous = tail;
+            tail = node;
         }
-
-        ++length;
     }
 
     @Override
-    public void remove(int index) {
-        if(index >= length || index < 0) {
-            throw new IndexOutOfBoundsException(index + " >= " + length);
-        }
+    public Type poll() {
+        Type value = head.value;
 
-        if(index == 0) {
-            first = first.next;
-            --length;
-            return;
-        }
+        head = head.next;
 
-        Node<Type> actual = first;
-
-        for(int i = 0;i < index - 1;++i) {
-            actual = actual.next;
-        }
-
-        actual.next = actual.next.next;
-        --length;
+        return value;
     }
 
     @Override
-    public Type get(int index) {
-        if(index >= length) {
-            throw new IndexOutOfBoundsException(index + " >= " + length);
-        }
-
-        Node<Type> actual = first;
-
-        for(int i = 0;i < index;++i) {
-            actual = actual.next;
-        }
-
-        return actual.value;
-    }
-
-    @Override
-    public int size() {
-        return length;
+    public boolean isEmpty() {
+        return head == null;
     }
 
     @Override
     public String toString() {
-        if(length == 0) {
+        if(head == null) {
             return "[]";
         }
 
         StringBuilder textBuilder = new StringBuilder("[");
 
-        Node<Type> actual = first;
+        Node actual = head;
 
-        for(int i = 0; i < length - 1; ++i) {
+        while(actual.next != null) {
             textBuilder.append(actual.value).append(", ");
             actual = actual.next;
         }
