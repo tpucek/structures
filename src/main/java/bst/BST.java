@@ -32,6 +32,8 @@ public class BST {
         }
     }
 
+    test
+
     public void find(int number) {
         TreeNode<Integer> current = root;
 
@@ -47,5 +49,20 @@ public class BST {
         }
 
         System.out.println("Not found: " + number);
+    }
+
+    public static deep(int number){
+        TreeNode<Integer> current = root;
+        int d = 0;
+        while (current != null) {
+            TreeNode<Integer> right = current.getRight();
+            TreeNode<Integer> left = current.getLeft();
+            if(left==null && right==null){
+                System.out.println("Deep: " + d);
+                return;
+            }
+
+            return;
+        }
     }
 }
